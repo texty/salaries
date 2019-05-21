@@ -281,15 +281,43 @@
       font-size: 0 !important; } }
 
 body {
-  font-family: 'Roboto', sans-serif;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  color: #484D60;
+  font-family: 'Play', sans-serif; }
 
 main {
   display: grid;
   grid-template-columns: 70% 30%; }
+  main svg path.domain {
+    stroke: grey; }
+  main svg g.tick text {
+    fill: grey; }
 
-.button {
-  cursor: pointer; }
+#types {
+  width: 300px;
+  height: 600px;
+  overflow-y: auto; }
+  #types #myInput {
+    width: 90%;
+    height: 30px; }
+  #types ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
+    #types ul li {
+      border-bottom: 1px solid lightgrey;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+    #types ul p {
+      margin: 0;
+      padding: 5px 0; }
+    #types ul .plus {
+      margin-right: 5px;
+      width: 15px;
+      height: 15px; }
 
 /*# sourceMappingURL=styles.css.map */

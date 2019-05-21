@@ -28,15 +28,33 @@ d3.csv("data/salaries.csv", function(data) {
         }
     });
 
+    classes.sort(function(a,b){
+        return d3.ascending(a, b)
+    });
+
+    var row = d3.select("#types")
+        .append("ul")
+        .attr("id", "myUL");
+
+
     classes.forEach(function(d){
-        d3.select("#types")
-            .append("p")
-            .attr("class", "button")
-            .style("margin", "5px 10px")
-            .style("background-color", "lightgrey")
-            .html(d)
+
+        var myLI = row.append("li")
             .on("click", function(){
-                selected = this.innerHTML;
+
+            });
+
+
+        myLI.append("p")
+            .html(d);
+
+
+        myLI.append("img")
+            .attr("src", "img/plus.png")
+            .attr("class", "plus")
+            .style("cursor", "pointer")
+            .on("click", function(){
+                selected = $(this).closest("li").text();
                 var  newData = data.filter(function(k){
                     return k.type === selected;
                 });
@@ -44,6 +62,7 @@ d3.csv("data/salaries.csv", function(data) {
                 databind(newData, selected);
 
             });
+
     });
 });
 
@@ -158,7 +177,7 @@ function databind(myData, key) {
         .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
         .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
         .attr("height", function(d) { return height - y(d.length); })
-        .style("fill", "#484D60");
+        .style("fill", "#432E3E");
 
 
     /* додаємо підпис */
@@ -305,5 +324,26 @@ function removeElement(array, elem) {
     var index = array.indexOf(elem);
     if (index > -1) {
         array.splice(index, 1);
+    }
+}
+
+
+function myFunction() {
+    // Declare variables
+    var input, filter, ul, li, p, i, txtValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName('li');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        p = li[i].getElementsByTagName("p")[0];
+        txtValue = p.textContent || p.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
     }
 }
