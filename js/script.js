@@ -5,6 +5,8 @@ var margin = {top: 30, right: 30, bottom: 50, left: 50},
     width = 300 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
 
+var meanSalary_2018 =  8867;
+
 
 var line = d3.line()
     .curve(d3.curveBasis);
@@ -113,7 +115,7 @@ function databind(myData, key) {
     });
 
     var x = d3.scaleLinear()
-        .domain([0, 100000])
+        .domain([0, 50000])
         .range([0, width]);
 
     /* перемальовуємо x-Axis для всіх графіків в залежності від значень найбільшого*/
@@ -128,9 +130,9 @@ function databind(myData, key) {
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format(".0s")));
 
-    const constX = 100000;
+    const constX = 50000;
     /* створюємо histogram*/
-    const thresholds = d3.range(0, constX, (constX - 0) / 40);
+    const thresholds = d3.range(0, constX, (constX - 0) / 30);
     var histogram = d3.histogram()
         .value(function(d) { return d.value; })   // I need to give the vector of value
         .domain(x.domain())  // then the domain of the graphic
@@ -181,6 +183,16 @@ function databind(myData, key) {
         .style("fill", mainColor);
 
 
+    svg.append("line")
+        .attr("x1", x(8867))
+        .attr("x2", x(8867))
+        .attr("y1", 0)
+        .attr("y2", height)
+        .style("stroke", "grey")
+        .style("stroke-dasharray", "2");
+
+
+
     /* додаємо підпис */
     svg.append("text")
         .attr("text-anchor", "start")
@@ -196,7 +208,7 @@ function update() {
     var xMax = d3.max(xAxisMax, function(d) { return d });
 
     var x = d3.scaleLinear()
-        .domain([0, 100000])
+        .domain([0, 50000])
         .range([0, width]);
 
 
