@@ -1,4 +1,5 @@
 // set the dimensions and margins of the graph
+var log = console.log;
 var margin = {top: 30, right: 30, bottom: 50, left: 50},
     width = 300 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
@@ -65,7 +66,12 @@ function databind(myData, key) {
         .attr("class", "current remove")
         .on("click", function(d) {
             var valueToRemove = $(this).closest("svg").attr("data");
-            yAxisMax = _.without(yAxisMax, +valueToRemove);
+            valueToRemove = +valueToRemove;
+            log(yAxisMax);
+            removeElement(yAxisMax, valueToRemove);
+
+            // yAxisMax = _.without(yAxisMax, +valueToRemove);
+            log(yAxisMax);
             update();
             $(this).closest("svg").remove();
         })
@@ -104,7 +110,7 @@ function databind(myData, key) {
 
     const constX = 100000;
     /* створюємо histogram*/
-    const thresholds = d3.range(0, constX, (constX - 0) / 20);
+    const thresholds = d3.range(0, constX, (constX - 0) / 40);
     var histogram = d3.histogram()
         .value(function(d) { return d.value; })   // I need to give the vector of value
         .domain(x.domain())  // then the domain of the graphic
@@ -125,11 +131,11 @@ function databind(myData, key) {
     d3.selectAll(".y-axis")
         .transition()
         .duration(750)
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y).ticks(5));
 
     svg.append("g")
         .attr("class", "y-axis")
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y).ticks(5));
 
     d3.selectAll(".bins")
         .transition()
@@ -148,11 +154,11 @@ function databind(myData, key) {
         .enter()
         .append("rect")
         .attr("class", "bins")
-        .attr("x", 1)
+        .attr("x", 0)
         .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
         .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
         .attr("height", function(d) { return height - y(d.length); })
-        .style("fill", "#3D728E");
+        .style("fill", "#484D60");
 
 
     /* додаємо підпис */
@@ -161,7 +167,7 @@ function databind(myData, key) {
         .attr("y", -5)
         .attr("x", 0)
         .text(key)
-        .style("fill", "#3D728E");
+        .style("fill", "#484D60");
 
 }
 
@@ -182,7 +188,7 @@ function update() {
     d3.selectAll(".y-axis")
         .transition()
         .duration(750)
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y).ticks(5));
 
 
     d3.selectAll(".bins")
@@ -271,7 +277,6 @@ function kernelEpanechnikov(k) {
 }
 
 
-
 function dragstarted() {
     var d = d3.event.subject,
         active = svg.append("path").attr("class", "draggedPath").datum(d),
@@ -293,4 +298,12 @@ function dragstarted() {
         alert("finished");
         d3.selectAll(".draggedPath").remove()
     });
+}
+
+
+function removeElement(array, elem) {
+    var index = array.indexOf(elem);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
 }
