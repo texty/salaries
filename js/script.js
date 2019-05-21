@@ -1,5 +1,6 @@
 // set the dimensions and margins of the graph
 var log = console.log;
+var mainColor =  '#B8001D';
 var margin = {top: 30, right: 30, bottom: 50, left: 50},
     width = 300 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
@@ -177,7 +178,7 @@ function databind(myData, key) {
         .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
         .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
         .attr("height", function(d) { return height - y(d.length); })
-        .style("fill", "#432E3E");
+        .style("fill", mainColor);
 
 
     /* додаємо підпис */
@@ -186,7 +187,7 @@ function databind(myData, key) {
         .attr("y", -5)
         .attr("x", 0)
         .text(key)
-        .style("fill", "#484D60");
+        .style("fill", mainColor);
 
 }
 

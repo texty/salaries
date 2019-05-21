@@ -55,15 +55,6 @@
         stroke-linecap: round;
     }
 
-    /*.mypath {*/
-        /*fill: green;*/
-        /*stroke: grey;*/
-        /*opacity:0.3;*/
-    /*}*/
-
-    /*path.domain {*/
-        /*stroke:black;*/
-    /*}*/
 </style>
 <!-- Scripts -->
 <body>
@@ -86,7 +77,12 @@
     <!--<img id="cover-picture" src="img/cover.png"/>-->
 </div>
 
-<p> Клікайте на назви професій праворуч, аби додати графік, клікайте на графік, аби прибрати його</p>
+
+<div>
+    <p style=""> Клікайте на "плюс" біля назви професій, щоб додати графік.
+        <br> Щоб прибрати графік, клікніть на нього.
+        <br> По x - зарплата - тис. грн на місяць. <br> По y - частота.</p>
+</div>
 
 <main>
 
@@ -96,7 +92,7 @@
     <!--</svg>-->
 </div>
 <div id="types">
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Шукати">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="шукати">
 
 </div>
 

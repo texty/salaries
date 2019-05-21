@@ -4,26 +4,34 @@
 @import "footer";
 
 
-$mainColor: #484D60;
+//$mainColor: #432E3E;
+$mainColor: #3D728E;
 
 body {
   margin:0;
   padding:0;
-  color:$mainColor;
+  color:#484D60;
   font-family: 'Play', sans-serif;
 
 }
 
 
+p {
+  line-height: 1.6;
+}
 main {
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: auto 20%;
 
 
   svg {
 
 
     path.domain {
+      stroke:grey;
+    }
+
+    g.tick line {
       stroke:grey;
     }
 
@@ -38,13 +46,21 @@ main {
 
 
 #types {
-  width: 300px;
+  width: 80%;
   height: 600px;
   overflow-y: auto;
+  border: 1px solid lightgrey;
+  padding:20px;
 
   #myInput {
+    font-family: 'Play', sans-serif;
+    font-size: 18px;
+    //font-style:italic;
+    border: 0;
+    border-bottom: 1px solid lightgrey;
     width:90%;
     height:30px;
+    margin-bottom: 20px;
   }
 
 

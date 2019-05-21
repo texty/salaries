@@ -286,21 +286,33 @@ body {
   color: #484D60;
   font-family: 'Play', sans-serif; }
 
+p {
+  line-height: 1.6; }
+
 main {
   display: grid;
-  grid-template-columns: 70% 30%; }
+  grid-template-columns: auto 20%; }
   main svg path.domain {
+    stroke: grey; }
+  main svg g.tick line {
     stroke: grey; }
   main svg g.tick text {
     fill: grey; }
 
 #types {
-  width: 300px;
+  width: 80%;
   height: 600px;
-  overflow-y: auto; }
+  overflow-y: auto;
+  border: 1px solid lightgrey;
+  padding: 20px; }
   #types #myInput {
+    font-family: 'Play', sans-serif;
+    font-size: 18px;
+    border: 0;
+    border-bottom: 1px solid lightgrey;
     width: 90%;
-    height: 30px; }
+    height: 30px;
+    margin-bottom: 20px; }
   #types ul {
     list-style-type: none;
     padding: 0;
