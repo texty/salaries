@@ -5,7 +5,10 @@ var margin = {top: 30, right: 30, bottom: 50, left: 50},
     width = 300 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
 
+
 var meanSalary_2018 =  8867;
+var xDomain = 80000;
+var commonYAxis = true;
 
 
 var line = d3.line()
@@ -26,6 +29,7 @@ var selected;
 d3.csv("data/salaries.csv", function(data) {
     data.forEach(function(d){
         d.value = +d.value/12;
+        d.mean = +d.mean/12;
         if(!classes.includes(d.type)){
             classes.push(d.type)
         }
@@ -61,8 +65,12 @@ d3.csv("data/salaries.csv", function(data) {
                 var  newData = data.filter(function(k){
                     return k.type === selected;
                 });
+                if(commonYAxis === true){
+                    addChartCommonScale(newData, selected)
+                } else {
+                    addChartPersonalScale(newData, selected)
+                }
 
-                databind(newData, selected);
 
             });
 
@@ -75,7 +83,11 @@ var xAxisMax = [];
 var yAxisMax = [];
 
 
-function databind(myData, key) {
+
+
+
+
+function addChartCommonScale(myData, key) {
 
     /* доступ до останнього svg */
     d3.selectAll(".remove").classed("current", false);
@@ -91,10 +103,13 @@ function databind(myData, key) {
             valueToRemove = +valueToRemove;
             log(yAxisMax);
             removeElement(yAxisMax, valueToRemove);
-
-            // yAxisMax = _.without(yAxisMax, +valueToRemove);
             log(yAxisMax);
-            update();
+            if(commonYAxis === true){
+                update();
+            } else {
+                // updateToPersonal();
+            }
+
             $(this).closest("svg").remove();
         })
          .append("g")
@@ -115,7 +130,7 @@ function databind(myData, key) {
     });
 
     var x = d3.scaleLinear()
-        .domain([0, 50000])
+        .domain([0, xDomain])
         .range([0, width]);
 
     /* перемальовуємо x-Axis для всіх графіків в залежності від значень найбільшого*/
@@ -130,9 +145,9 @@ function databind(myData, key) {
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format(".0s")));
 
-    const constX = 50000;
+
     /* створюємо histogram*/
-    const thresholds = d3.range(0, constX, (constX - 0) / 30);
+    const thresholds = d3.range(0, xDomain, (xDomain - 0) / 30);
     var histogram = d3.histogram()
         .value(function(d) { return d.value; })   // I need to give the vector of value
         .domain(x.domain())  // then the domain of the graphic
@@ -163,7 +178,6 @@ function databind(myData, key) {
         .transition()
         .duration(750)
         .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
-        // .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
         .attr("height", function(d) { return height - y(d.length); });
 
     /* додатковий атрибут svg, щоб отримати доступ до y-max до кожного графіка */
@@ -191,7 +205,12 @@ function databind(myData, key) {
         .style("stroke", "grey")
         .style("stroke-dasharray", "2");
 
-
+    svg.append("line")
+        .attr("x1", x(myData[0].mean) )
+        .attr("x2", x(myData[0].mean) )
+        .attr("y1", 0)
+        .attr("y2", height)
+        .style("stroke", "#005AD3");
 
     /* додаємо підпис */
     svg.append("text")
@@ -200,28 +219,154 @@ function databind(myData, key) {
         .attr("x", 0)
         .text(key)
         .style("fill", mainColor);
-
 }
+
+
+//Якщо різна шкала
+function addChartPersonalScale(myData, key) {
+
+    /* доступ до останнього svg */
+    d3.selectAll(".remove").classed("current", false);
+
+    /* додаємо і видаляємо svg по кліку */
+    var svg = d3.select("#multiples")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("class", "current remove")
+        .on("click", function(d) {
+            var valueToRemove = $(this).closest("svg").attr("data");
+            valueToRemove = +valueToRemove;
+            log(yAxisMax);
+            removeElement(yAxisMax, valueToRemove);
+
+            log(yAxisMax);
+            if(commonYAxis === true){
+                update();
+            } else {
+                // updateToPersonal();
+            }
+            $(this).closest("svg").remove();
+        })
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+    /* додаємо максимальне значення цих даних до попередніх */
+    xAxisMax.push(d3.max(myData, function(d) { return +d.value;} ));
+
+    /* визначаємо максимальне значення x з усіх наявних на екрані*/
+    var xMax = d3.max(xAxisMax, function(d) { return d });
+
+    var newList = [];
+    myData.forEach(function(d){
+        if(!newList.includes(d.type)){
+            newList.push(d.type)
+        }
+    });
+
+    var x = d3.scaleLinear()
+        .domain([0, xDomain])
+        .range([0, width]);
+
+    /* перемальовуємо x-Axis для всіх графіків в залежності від значень найбільшого*/
+    d3.selectAll(".x-axis")
+        .transition()
+        .duration(750)
+        .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format(".0s")));
+
+    /* додаємо x-Axis графік в поточний */
+    svg.append("g")
+        .attr("class", "x-axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format(".0s")));
+
+
+    /* створюємо histogram*/
+    const thresholds = d3.range(0, xDomain, (xDomain - 0) / 30);
+    var histogram = d3.histogram()
+        .value(function(d) { return d.value; })   // I need to give the vector of value
+        .domain(x.domain())  // then the domain of the graphic
+        .thresholds(thresholds); // then the numbers of bins
+
+    var bins = histogram(myData);
+    var yDomain = d3.max(bins, function(d) { return d.length; });
+    /* додаємо максимальне y-Axis значення цих даних до попередніх */
+    yAxisMax.push(d3.max(bins, function(d) { return d.length; }));
+
+    /* визначаємо актуальне максимальне */
+    var yMax = d3.max(yAxisMax, function(d) { return d });
+
+    var y = d3.scaleLinear()
+        .range([height, 0])
+        .domain([0, yDomain]);
+
+    svg.append("g")
+        .attr("class", "y-axis")
+        .call(d3.axisLeft(y).ticks(5));
+
+    /* додатковий атрибут svg, щоб отримати доступ до y-max до кожного графіка */
+    var currentMax = d3.max(bins, function(d) { return d.length; });
+    d3.select(".current").attr("data", currentMax);
+
+
+
+    /* додаємо гістограму у поточний графік */
+    svg.selectAll("rect")
+        .data(bins)
+        .enter()
+        .append("rect")
+        .attr("class", "bins")
+        .attr("x", 0)
+        .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+        .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
+        .attr("height", function(d) { return height - y(d.length); })
+        .style("fill", mainColor);
+
+
+    svg.append("line")
+        .attr("x1", x(8867))
+        .attr("x2", x(8867))
+        .attr("y1", 0)
+        .attr("y2", height)
+        .style("stroke", "grey")
+        .style("stroke-dasharray", "2");
+
+    svg.append("line")
+        .attr("x1", x(myData[0].mean) )
+        .attr("x2", x(myData[0].mean) )
+        .attr("y1", 0)
+        .attr("y2", height)
+        .style("stroke", "#005AD3");
+
+    /* додаємо підпис */
+    svg.append("text")
+        .attr("text-anchor", "start")
+        .attr("y", -5)
+        .attr("x", 0)
+        .text(key)
+        .style("fill", mainColor);
+}
+
+
+
 
 function update() {
     var yMax = d3.max(yAxisMax, function(d) { return d });
     var xMax = d3.max(xAxisMax, function(d) { return d });
 
     var x = d3.scaleLinear()
-        .domain([0, 50000])
+        .domain([0, xDomain])
         .range([0, width]);
-
 
     var y = d3.scaleLinear()
         .range([height, 0])
         .domain([0, yMax]);
 
-
     d3.selectAll(".y-axis")
         .transition()
         .duration(750)
         .call(d3.axisLeft(y).ticks(5));
-
 
     d3.selectAll(".bins")
         .transition()
@@ -229,6 +374,40 @@ function update() {
         .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
         // .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
         .attr("height", function(d) { return height - y(d.length); });
+}
+
+function updateToPersonal() {
+   $("svg").each(function(i){
+        var currentChart = $("svg")[i];
+        var currentChartDomain = $(currentChart).attr("data");
+        console.log(currentChartDomain);
+
+        var x = d3.scaleLinear()
+            .domain([0, xDomain])
+            .range([0, width]);
+
+        var y = d3.scaleLinear()
+            .range([height, 0])
+            .domain([0, currentChartDomain]);
+
+        var currentY = $(currentChart.childNodes[0]).find(".y-axis")[0];
+        //
+        d3.select(currentY)
+            .transition()
+            .duration(750)
+            .call(d3.axisLeft(y).ticks(5));
+        //
+        //
+        var currentBins = $(currentChart.childNodes[0]).find("rect");
+        //
+        d3.selectAll(currentBins)
+            .transition()
+            .duration(750)
+            .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+            .attr("height", function(d) { return height - y(d.length); });
+
+    });
+
 }
 
 
@@ -285,7 +464,16 @@ function update() {
 
 
 
-
+d3.select("#yAxisType button").on("click", function() {
+    commonYAxis = !commonYAxis;
+    if(commonYAxis === true) {
+        d3.select("#yAxisType button").text("Єдина Y-шкала (акт.)");
+        update()
+    } else {
+        d3.select("#yAxisType button").text("Єдина Y-шкала (неакт.)");
+        updateToPersonal()
+    }
+});
 
 
 
