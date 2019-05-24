@@ -22,21 +22,62 @@ var line = d3.line()
 
 
 
-var classes = [];
 var selected;
+var desiredSalary = 0;
+var desiredSphere = false;
 
 
-d3.csv("data/salaries.csv", function(data) {
+d3.csv("data/salaries.csv", function(fullData) {
+
+
+
+    filterProffesions(fullData, desiredSalary, desiredSphere);
+
+
+
+
+    d3.select("#submit").on("click", function() {
+        desiredSalary = $('input[type=number][name=getSalary]').val();
+        console.log(desiredSalary);
+        filterProffesions(fullData, desiredSalary, desiredSphere)
+    });
+
+
+});
+
+
+function filterProffesions(given, desiredSalary, desiredSphere) {
+
+    d3.select("#types ul").remove();
+
+    var data;
+
+    if (desiredSphere){
+        data = given.filter(function(d) {
+            return d.sphere === desiredSphere && d.mean > desiredSalary
+        });
+    } else {
+        data = given.filter(function(d) {
+           return d.mean > desiredSalary
+        });
+    }
+
+    var classesTypeList = [];
+    var classes = [];
+
     data.forEach(function(d){
         d.value = +d.value/12;
         d.mean = +d.mean/12;
-        if(!classes.includes(d.type)){
-            classes.push(d.type)
+
+        if(!classesTypeList.includes(d.type)){
+            classesTypeList.push(d.type);
+            classes.push(d)
         }
+
     });
 
     classes.sort(function(a,b){
-        return d3.ascending(a, b)
+        return d3.ascending(a.type, b.type)
     });
 
     var row = d3.select("#types")
@@ -53,7 +94,7 @@ d3.csv("data/salaries.csv", function(data) {
 
 
         myLI.append("p")
-            .html(d);
+            .html(d.type);
 
 
         myLI.append("img")
@@ -73,18 +114,15 @@ d3.csv("data/salaries.csv", function(data) {
 
 
             });
-
     });
-});
+}
+
+
 
 
 
 var xAxisMax = [];
 var yAxisMax = [];
-
-
-
-
 
 
 function addChartCommonScale(myData, key) {
@@ -474,6 +512,7 @@ d3.select("#yAxisType button").on("click", function() {
         updateToPersonal()
     }
 });
+
 
 
 

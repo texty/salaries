@@ -297,7 +297,7 @@ p {
 main {
   height: 100vh;
   display: grid;
-  grid-template-columns: auto 15%; }
+  grid-template-columns: auto 25%; }
   main #yAxisType {
     width: 100%; }
     main #yAxisType button {
@@ -312,6 +312,8 @@ main {
     stroke: grey; }
   main svg g.tick text {
     fill: grey; }
+  main svg rect {
+    opacity: 0.8; }
 
 #sum {
   margin: 20px 0;
@@ -332,7 +334,7 @@ select {
 
 #types {
   width: 80%;
-  height: 400px;
+  height: 500px;
   overflow-y: auto;
   border: 1px solid lightgrey;
   padding: 0 20px; }
@@ -340,6 +342,7 @@ select {
     position: sticky;
     top: 0;
     font-family: 'Play', sans-serif;
+    color: #B8001D;
     font-size: 18px;
     border: 0;
     border-bottom: 1px solid lightgrey;
