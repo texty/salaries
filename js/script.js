@@ -9,6 +9,9 @@ var margin = {top: 30, right: 30, bottom: 50, left: 50},
 var meanSalary_2018 =  8867;
 var xDomain = 80000;
 var commonYAxis = true;
+var xAxisMax = [];
+var yAxisMax = [];
+
 
 
 var line = d3.line()
@@ -29,25 +32,21 @@ var desiredSphere = false;
 
 d3.csv("data/salaries.csv", function(fullData) {
 
-
-
     filterProffesions(fullData, desiredSalary, desiredSphere);
-
-
-
+    
 
     d3.select("#submit").on("click", function() {
         desiredSalary = $('input[type=number][name=getSalary]').val();
         console.log(desiredSalary);
         filterProffesions(fullData, desiredSalary, desiredSphere)
     });
-
+    
 
 });
 
 
 function filterProffesions(given, desiredSalary, desiredSphere) {
-
+    
     d3.select("#types ul").remove();
 
     var data;
@@ -65,6 +64,7 @@ function filterProffesions(given, desiredSalary, desiredSphere) {
     var classesTypeList = [];
     var classes = [];
 
+    
     data.forEach(function(d){
         d.value = +d.value/12;
         d.mean = +d.mean/12;
@@ -73,30 +73,25 @@ function filterProffesions(given, desiredSalary, desiredSphere) {
             classesTypeList.push(d.type);
             classes.push(d)
         }
-
     });
 
+    
     classes.sort(function(a,b){
         return d3.ascending(a.type, b.type)
     });
+    
 
     var row = d3.select("#types")
         .append("ul")
         .attr("id", "myUL");
 
-
+    
     classes.forEach(function(d){
-
-        var myLI = row.append("li")
-            .on("click", function(){
-
-            });
-
-
+        var myLI = row.append("li");  
+        
         myLI.append("p")
             .html(d.type);
-
-
+        
         myLI.append("img")
             .attr("src", "img/plus.png")
             .attr("class", "plus")
@@ -111,18 +106,10 @@ function filterProffesions(given, desiredSalary, desiredSphere) {
                 } else {
                     addChartPersonalScale(newData, selected)
                 }
-
-
             });
     });
 }
 
-
-
-
-
-var xAxisMax = [];
-var yAxisMax = [];
 
 
 function addChartCommonScale(myData, key) {
@@ -414,6 +401,10 @@ function update() {
         .attr("height", function(d) { return height - y(d.length); });
 }
 
+
+
+
+
 function updateToPersonal() {
    $("svg").each(function(i){
         var currentChart = $("svg")[i];
@@ -429,15 +420,14 @@ function updateToPersonal() {
             .domain([0, currentChartDomain]);
 
         var currentY = $(currentChart.childNodes[0]).find(".y-axis")[0];
-        //
+        
         d3.select(currentY)
             .transition()
             .duration(750)
             .call(d3.axisLeft(y).ticks(5));
-        //
-        //
+       
         var currentBins = $(currentChart.childNodes[0]).find("rect");
-        //
+        
         d3.selectAll(currentBins)
             .transition()
             .duration(750)
@@ -450,58 +440,7 @@ function updateToPersonal() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // // Compute kernel density estimation
-    // var kde = kernelDensityEstimator(kernelEpanechnikov(7), x.ticks(30));
-    //
-    // // d3.select(".x-axis")
-    // //     .data(myData)
-    // //     .transition()
-    // //     .duration(750)
-    // //     .call(d3.axisBottom(x));
-    //
-    //
-    // newList.forEach(function(item){
-    //     var density1 =  kde( myData
-    //         .filter( function(d){return d.type === item} )
-    //         .map(function(d){  return d.value; }) );
-    //
-    //
-    //     // Plot the area
-    //     svg.append("path")
-    //         .datum(density1)
-    //         .attr("class", "mypath")
-    //         .attr("fill", "#69b3a2")
-    //         .attr("opacity", "0.3")
-    //         .attr("stroke", "#000")
-    //         .attr("stroke-width", 1)
-    //         .attr("stroke-linejoin", "round")
-    //         .attr("d",  d3.line()
-    //             .curve(d3.curveBasis)
-    //             .x(function(d) { return x(d[0]); })
-    //             .y(function(d) { return y(d[1]); })
-    //         );
-    //
-    // });
-
-
-
+//Міняємо шкалу активна/неактивна
 d3.select("#yAxisType button").on("click", function() {
     commonYAxis = !commonYAxis;
     if(commonYAxis === true) {
@@ -514,52 +453,7 @@ d3.select("#yAxisType button").on("click", function() {
 });
 
 
-
-
-
-
-
-
-
-// Function to compute density
-function kernelDensityEstimator(kernel, X) {
-    return function(V) {
-        return X.map(function(x) {
-            return [x, d3.mean(V, function(v) { return kernel(x - v); })];
-        });
-    };
-}
-function kernelEpanechnikov(k) {
-    return function(v) {
-        return Math.abs(v /= k) <= 1 ? 0.75 * (1 - v * v) / k : 0;
-    };
-}
-
-
-function dragstarted() {
-    var d = d3.event.subject,
-        active = svg.append("path").attr("class", "draggedPath").datum(d),
-        x0 = d3.event.x,
-        y0 = d3.event.y;
-
-    d3.event.on("drag", function() {
-        var x1 = d3.event.x,
-            y1 = d3.event.y,
-            dx = x1 - x0,
-            dy = y1 - y0;
-
-        if (dx * dx + dy * dy > 100) d.push([x0 = x1, y0 = y1]);
-        else d[d.length - 1] = [x1, y1];
-        active.attr("d", line);
-    });
-
-    d3.event.on("end", function() {
-        alert("finished");
-        d3.selectAll(".draggedPath").remove()
-    });
-}
-
-
+//видалити значення Y-шкали, після видалення графіка
 function removeElement(array, elem) {
     var index = array.indexOf(elem);
     if (index > -1) {
@@ -567,7 +461,7 @@ function removeElement(array, elem) {
     }
 }
 
-
+//пошук професії
 function myFunction() {
     // Declare variables
     var input, filter, ul, li, p, i, txtValue;
@@ -587,3 +481,82 @@ function myFunction() {
         }
     }
 }
+
+
+
+
+
+
+
+
+// // Compute kernel density estimation
+// var kde = kernelDensityEstimator(kernelEpanechnikov(7), x.ticks(30));
+//
+// // d3.select(".x-axis")
+// //     .data(myData)
+// //     .transition()
+// //     .duration(750)
+// //     .call(d3.axisBottom(x));
+//
+//
+// newList.forEach(function(item){
+//     var density1 =  kde( myData
+//         .filter( function(d){return d.type === item} )
+//         .map(function(d){  return d.value; }) );
+//
+//
+//     // Plot the area
+//     svg.append("path")
+//         .datum(density1)
+//         .attr("class", "mypath")
+//         .attr("fill", "#69b3a2")
+//         .attr("opacity", "0.3")
+//         .attr("stroke", "#000")
+//         .attr("stroke-width", 1)
+//         .attr("stroke-linejoin", "round")
+//         .attr("d",  d3.line()
+//             .curve(d3.curveBasis)
+//             .x(function(d) { return x(d[0]); })
+//             .y(function(d) { return y(d[1]); })
+//         );
+//
+// });
+
+
+// Function to compute density
+// function kernelDensityEstimator(kernel, X) {
+//     return function(V) {
+//         return X.map(function(x) {
+//             return [x, d3.mean(V, function(v) { return kernel(x - v); })];
+//         });
+//     };
+// }
+// function kernelEpanechnikov(k) {
+//     return function(v) {
+//         return Math.abs(v /= k) <= 1 ? 0.75 * (1 - v * v) / k : 0;
+//     };
+// }
+//
+//
+// function dragstarted() {
+//     var d = d3.event.subject,
+//         active = svg.append("path").attr("class", "draggedPath").datum(d),
+//         x0 = d3.event.x,
+//         y0 = d3.event.y;
+//
+//     d3.event.on("drag", function() {
+//         var x1 = d3.event.x,
+//             y1 = d3.event.y,
+//             dx = x1 - x0,
+//             dy = y1 - y0;
+//
+//         if (dx * dx + dy * dy > 100) d.push([x0 = x1, y0 = y1]);
+//         else d[d.length - 1] = [x1, y1];
+//         active.attr("d", line);
+//     });
+//
+//     d3.event.on("end", function() {
+//         alert("finished");
+//         d3.selectAll(".draggedPath").remove()
+//     });
+// }

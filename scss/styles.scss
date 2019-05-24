@@ -7,6 +7,8 @@
 //$mainColor: #432E3E;
 $mainColor: #3D728E;
 
+
+
 body {
   margin:0;
   padding:0;
@@ -110,6 +112,21 @@ select {
     padding: 10px 0;
     background-color: white;
   }
+
+
+
+  input[name="search"]::placeholder { /* Firefox, Chrome, Opera */
+    color: #B8001D;
+  }
+
+  input[name="search"]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #B8001D;
+  }
+
+  input[name="search"]::-ms-input-placeholder { /* Microsoft Edge */
+    color: #B8001D;
+  }
+
 
 
   ul {
