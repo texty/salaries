@@ -27,19 +27,38 @@ var line = d3.line()
 
 var selected;
 var desiredSalary = 0;
-var desiredSphere = false;
+var desiredSphere = "Освіта";
 
 
 d3.csv("data/salaries.csv", function(fullData) {
 
+    fullData.forEach(function(d) {
+        d.mean = +d.mean/12;
+        d.value = +d.value/12;
+    });
+
     filterProffesions(fullData, desiredSalary, desiredSphere);
+    addMultipleCharts()
     
 
     d3.select("#submit").on("click", function() {
         desiredSalary = $('input[type=number][name=getSalary]').val();
         console.log(desiredSalary);
+        desiredSalary = +desiredSalary;
         filterProffesions(fullData, desiredSalary, desiredSphere)
     });
+
+
+    $('select#sphere').on("change", function(){
+        if(this.options[this.selectedIndex].value != ""){
+            desiredSphere = this.options[this.selectedIndex].value;
+        } else {
+            desiredSphere = false
+        }
+
+        filterProffesions(fullData, desiredSalary, desiredSphere)
+    });
+
     
 
 });
@@ -66,9 +85,6 @@ function filterProffesions(given, desiredSalary, desiredSphere) {
 
     
     data.forEach(function(d){
-        d.value = +d.value/12;
-        d.mean = +d.mean/12;
-
         if(!classesTypeList.includes(d.type)){
             classesTypeList.push(d.type);
             classes.push(d)
@@ -436,6 +452,17 @@ function updateToPersonal() {
 
     });
 
+}
+
+
+
+function addMultipleCharts() {
+
+    var target = $("#types ul li");
+
+    for(var i = 0; i < target.length; i++){
+        $(".plus")[i].click()
+    }
 }
 
 

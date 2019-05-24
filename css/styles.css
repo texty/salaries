@@ -334,7 +334,7 @@ select {
 
 #types {
   width: 80%;
-  height: 500px;
+  height: 400px;
   overflow-y: auto;
   border: 1px solid lightgrey;
   padding: 0 20px; }
