@@ -286,6 +286,10 @@ body {
   color: #484D60;
   font-family: 'Play', sans-serif; }
 
+#header {
+  width: 60%;
+  margin: auto; }
+
 h2 {
   font-size: 20px; }
 
