@@ -285,11 +285,14 @@ body {
   padding: 0;
   color: #484D60;
   font-family: 'Play', sans-serif;
-  line-height: 1.6; }
+  line-height: 1.6;
+  display: grid;
+  grid-template-columns: 400px auto;
+  grid-gap: 30px; }
 
 #header {
   width: 60%;
-  margin: auto; }
+  margin: 0 auto 0 0; }
 
 h2 {
   font-size: 20px; }
@@ -382,5 +385,22 @@ select {
       margin-right: 5px;
       width: 15px;
       height: 15px; }
+
+/* -------------------------------------------------------------- */
+#joke {
+  position: sticky;
+  top: 10px;
+  background-color: #e8e8e8;
+  padding: 20px; }
+  #joke #text {
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #B8001D; }
+  #joke .misprint {
+    background-color: #B8001D;
+    padding: 2px 5px;
+    color: white; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -2,8 +2,8 @@
 var log = console.log;
 var mainColor =  '#B8001D';
 var margin = {top: 30, right: 30, bottom: 50, left: 50},
-    width = 300 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
+    width = 800 - margin.left - margin.right,
+    height = 180 - margin.top - margin.bottom;
 
 
 var meanSalary_2018 =  8867;

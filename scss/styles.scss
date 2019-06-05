@@ -15,12 +15,15 @@ body {
   color:#484D60;
   font-family: 'Play', sans-serif;
   line-height: 1.6;
+  display:grid;
+  grid-template-columns: 400px auto;
+  grid-gap:30px;
 
 }
 
 #header {
   width:60%;
-  margin:auto;
+  margin:0 auto 0 0;
 }
 
 h2 {
@@ -162,3 +165,27 @@ select {
   }
 }
 
+
+
+/* -------------------------------------------------------------- */
+#joke {
+  position:sticky;
+  top:10px;
+  background-color: #e8e8e8;
+  padding:20px;
+
+  #text {
+    text-transform: uppercase;
+    font-size:25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #B8001D;
+  }
+
+
+  .misprint {
+    background-color:#B8001D;
+    padding:2px 5px;
+    color:white;
+  }
+}
