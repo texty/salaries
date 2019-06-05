@@ -291,8 +291,20 @@ body {
   grid-gap: 30px; }
 
 #header {
-  width: 60%;
-  margin: 0 auto 0 0; }
+  padding: 50px;
+  background-color: #B8001D;
+  color: white;
+  margin: 0; }
+
+h1, h3 {
+  width: 90%; }
+
+h1 {
+  text-transform: uppercase; }
+
+h3 {
+  font-size: 25px;
+  font-weight: normal; }
 
 h2 {
   font-size: 20px; }
@@ -390,17 +402,33 @@ select {
 #joke {
   position: sticky;
   top: 10px;
-  background-color: #e8e8e8;
-  padding: 20px; }
+  background-color: #E6EFFF;
+  padding: 50px 20px 20px 20px;
+  margin: 0; }
   #joke #text {
     text-transform: uppercase;
-    font-size: 25px;
     font-weight: bold;
-    letter-spacing: 5px;
-    color: #B8001D; }
+    color: #5893FC; }
   #joke .misprint {
-    background-color: #B8001D;
-    padding: 2px 5px;
-    color: white; }
+    padding: 2px;
+    color: #5893FC;
+    font-weight: bold; }
+  #joke .collapsible {
+    margin-bottom: 5px;
+    background-color: #5893FC;
+    color: #eeeeee;
+    cursor: pointer;
+    padding: 10px;
+    width: auto;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px; }
+
+.hideElem {
+  display: none; }
+
+.misprintCases {
+  margin: 0; }
 
 /*# sourceMappingURL=styles.css.map */
