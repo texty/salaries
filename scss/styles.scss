@@ -185,14 +185,14 @@ select {
 
 /* -------------------------------------------------------------- */
 #joke {
-  position:sticky;
-  top:10px;
+  //position:sticky;
+  //top:10px;
   //color:white;
   background-color: #E6EFFF;
   padding:50px 20px 20px 20px;
   margin:0;
-  //height:100vh;
-  //overflow-y: auto;
+  height:100vh;
+  overflow-y: auto;
 
   #text {
     text-transform: uppercase;
