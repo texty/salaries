@@ -7,7 +7,7 @@ var margin = {top: 30, right: 30, bottom: 50, left: 50},
 
 
 var meanSalary_2018 =  8867;
-var xDomain = 80000;
+var xDomain = 100000;
 var commonYAxis = true;
 var xAxisMax = [];
 var yAxisMax = [];
