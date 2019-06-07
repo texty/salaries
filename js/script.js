@@ -1,8 +1,11 @@
 // set the dimensions and margins of the graph
 var log = console.log;
 var mainColor =  '#B8001D';
+
+var multiplesCont = $("#multiples")[0].getBoundingClientRect();
+
 var margin = {top: 30, right: 30, bottom: 50, left: 50},
-    width = 800 - margin.left - margin.right,
+    width = multiplesCont.width - margin.left - margin.right,
     height = 180 - margin.top - margin.bottom;
 
 

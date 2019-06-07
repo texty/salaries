@@ -74,6 +74,10 @@ main {
   }
 
 
+  #multiples {
+    width:100%;
+  }
+
   svg {
 
     path.domain {
@@ -112,7 +116,8 @@ main {
 select {
   font-family: 'Play', sans-serif;
   padding:5px;
-  font-size:16px;
+  font-size:13px;
+  text-wrap: normal;
   //width:40%;
   margin-right:10%;
 }
