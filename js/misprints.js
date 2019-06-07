@@ -62,6 +62,7 @@ d3.csv("data/agrep_mistakes_result.csv", function(mistakes) {
         .style("left", "0")
         .style("z-index", "-1")
         .style("height", "20px")
+        .style("margin-top", "5px")
         .style("width", function(k){ return  k.freq * jokeWidth  + "px" })
         .style("background-color", "#F56380") ;
 
