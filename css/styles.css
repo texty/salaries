@@ -287,7 +287,7 @@ body {
   font-family: 'Play', sans-serif;
   line-height: 1.6;
   display: grid;
-  grid-template-columns: 400px auto;
+  grid-template-columns: minmax(300px, 25%) auto;
   grid-gap: 30px; }
 
 #header {
@@ -297,7 +297,7 @@ body {
   margin: 0; }
 
 h1, h3 {
-  width: 80%; }
+  width: 75%; }
 
 h1 {
   text-transform: uppercase; }
@@ -352,8 +352,11 @@ select {
   font-family: 'Play', sans-serif;
   padding: 5px;
   font-size: 13px;
-  text-wrap: normal;
-  margin-right: 10%; }
+  max-width: 100%;
+  overflow: hidden;
+  word-wrap: normal !important;
+  white-space: normal;
+  padding-right: 12px !important; }
 
 #types {
   width: 80%;
