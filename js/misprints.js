@@ -49,6 +49,8 @@ d3.csv("data/agrep_mistakes_result.csv", function(mistakes) {
     pcontent
         .attr("class", "misprintCases")
         .style("position", "relative")
+        .style("z-index", "5")
+
         .text(function(k){
                 return k.case + " / " + k.freq
            });

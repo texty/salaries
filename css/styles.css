@@ -287,7 +287,7 @@ body {
   font-family: 'Play', sans-serif;
   line-height: 1.6;
   display: grid;
-  grid-template-columns: minmax(300px, 25%) auto;
+  grid-template-columns: 300px auto;
   grid-gap: 30px; }
 
 #header {
