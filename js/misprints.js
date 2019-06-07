@@ -66,7 +66,7 @@ d3.csv("data/agrep_mistakes_result.csv", function(mistakes) {
         .style("background-color", "#F56380") ;
 
     pCont.selectAll(".misprintCases").sort(function(a,b){
-         return d3.ascending(a.freq, b.freq)
+         return d3.descending(a.freq, b.freq)
     });
 
 
@@ -129,7 +129,7 @@ d3.csv("data/agrep_mistakes_result.csv", function(mistakes) {
         .style("background-color", "#F56380") ;
 
     ap_pCont.selectAll(".misprintCases").sort(function(a,b){
-        return d3.ascending(a.freq, b.freq)
+        return d3.descending(a.freq, b.freq)
     })
 
 
