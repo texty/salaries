@@ -54,17 +54,24 @@ p {
   line-height: 1.6;
   margin:15px 0;
   padding:0;
-
-
 }
+
+#text-description {
+  width:60%;
+  margin:auto;
+  @media(max-width:800px){
+    width:90%;
+  }
+}
+
 main {
   height:100vh;
   width:100%;
   display: grid;
   grid-template-columns: 75% 25%;
-
-
-
+  @media(max-width:800px){
+    display:block;
+  }
 
   #yAxisType {
     //text-align: right;
@@ -82,11 +89,23 @@ main {
 
 
   #multiples {
+    grid-column: 1/2;
+    grid-row:1/2;
     width:100%;
+    @media(max-width:800px){
+      width:90%;
+      margin:auto;
+    }
   }
 
   #filters {
     width:100%;
+    grid-column: 2/3;
+    grid-row:1/2;
+    @media(max-width:800px){
+      width:90%;
+      margin:auto;
+    }
   }
 
   svg {

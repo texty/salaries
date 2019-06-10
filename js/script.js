@@ -33,6 +33,8 @@ var selected;
 var desiredSalary = 0;
 var desiredSphere = "Освіта";
 
+var actualBinsData;
+
 
 d3.csv("data/salaries.csv", function(fullData) {
 
@@ -42,7 +44,7 @@ d3.csv("data/salaries.csv", function(fullData) {
     });
 
     filterProffesions(fullData, desiredSalary, desiredSphere);
-    addMultipleCharts()
+    addMultipleCharts();
     
 
     d3.select("#submit").on("click", function() {
@@ -69,7 +71,6 @@ d3.csv("data/salaries.csv", function(fullData) {
 
 
 function filterProffesions(given, desiredSalary, desiredSphere) {
-    
     d3.select("#types ul").remove();
 
     var data;
@@ -243,6 +244,7 @@ function addChartCommonScale(myData, key) {
 
 
     svg.append("line")
+        .attr("class", "country-mean")
         .attr("x1", x(8867))
         .attr("x2", x(8867))
         .attr("y1", 0)
@@ -251,6 +253,8 @@ function addChartCommonScale(myData, key) {
         .style("stroke-dasharray", "2");
 
     svg.append("line")
+        .attr("class", "prof-mean")
+        .attr("data", myData[0].mean)
         .attr("x1", x(myData[0].mean) )
         .attr("x2", x(myData[0].mean) )
         .attr("y1", 0)
@@ -269,7 +273,6 @@ function addChartCommonScale(myData, key) {
 
 //Якщо різна шкала
 function addChartPersonalScale(myData, key) {
-
     /* доступ до останнього svg */
     d3.selectAll(".remove").classed("current", false);
 
@@ -370,6 +373,7 @@ function addChartPersonalScale(myData, key) {
 
 
     svg.append("line")
+        .attr("class", "country-mean")
         .attr("x1", x(8867))
         .attr("x2", x(8867))
         .attr("y1", 0)
@@ -378,6 +382,8 @@ function addChartPersonalScale(myData, key) {
         .style("stroke-dasharray", "2");
 
     svg.append("line")
+        .attr("class", "prof-mean")
+        .attr("data", myData[0].mean)
         .attr("x1", x(myData[0].mean) )
         .attr("x2", x(myData[0].mean) )
         .attr("y1", 0)
@@ -420,6 +426,60 @@ function update() {
         // .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
         .attr("height", function(d) { return height - y(d.length); });
 }
+
+
+$(window).on("resize",  function(d){
+    var newMultiplesCont = $("#multiples")[0].getBoundingClientRect();
+    var newWidth = newMultiplesCont.width - margin.left * 2 - margin.right;
+
+    var yMax = d3.max(yAxisMax, function(d) { return d });
+    var xMax = d3.max(xAxisMax, function(d) { return d });
+
+    var newX = d3.scaleLinear()
+        .domain([0, xDomain])
+        .range([0, newWidth]);
+
+    var newY = d3.scaleLinear()
+        .range([height, 0])
+        .domain([0, yMax]);
+
+    d3.selectAll("svg")
+        .attr("width", newWidth + margin.left + margin.right);
+
+    d3.selectAll(".x-axis")
+        .transition()
+        .duration(750)
+        .call(d3.axisBottom(newX).ticks(5).tickFormat(d3.format(".0s")));
+
+    d3.selectAll(".bins")
+        .transition()
+        .duration(750)
+        .attr("transform", function(d) { return "translate(" + newX(d.x0) + "," + newY(d.length) + ")"; })
+        .attr("width", function(d) {
+            return newX(d.x1) - newX(d.x0) - 1 ;
+        });
+
+    d3.selectAll("line.country-mean")
+        .transition()
+        .duration(750)
+        .attr("x1", newX(8867))
+        .attr("x2", newX(8867));
+
+    d3.selectAll("line.prof-mean")
+        .transition()
+        .duration(750)
+        .attr("x1", function() {
+            var myValue = $(this).attr("data");
+            myValue = + myValue;
+            return newX(myValue)
+        })
+        .attr("x2", function() {
+            var myValue = $(this).attr("data");
+            myValue = + myValue;
+            return newX(myValue)
+        })
+
+});
 
 
 
