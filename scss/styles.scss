@@ -59,8 +59,12 @@ p {
 }
 main {
   height:100vh;
+  width:100%;
   display: grid;
-  grid-template-columns: auto 25%;
+  grid-template-columns: 75% 25%;
+
+
+
 
   #yAxisType {
     //text-align: right;
@@ -78,6 +82,10 @@ main {
 
 
   #multiples {
+    width:100%;
+  }
+
+  #filters {
     width:100%;
   }
 

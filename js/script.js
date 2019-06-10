@@ -3,10 +3,10 @@ var log = console.log;
 var mainColor =  '#B8001D';
 
 var multiplesCont = $("#multiples")[0].getBoundingClientRect();
-$("main").css("width", multiplesCont.width)
+// $("main").css("width", multiplesCont.width);
 
 var margin = {top: 30, right: 30, bottom: 50, left: 50},
-    width = multiplesCont.width - margin.left - margin.right,
+    width = multiplesCont.width - margin.left * 2 - margin.right,
     height = 180 - margin.top - margin.bottom;
 
 
