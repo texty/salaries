@@ -72,12 +72,13 @@
   justify-content: space-between; }
 
 .logo {
+  margin-left: 5px;
   height: 50px;
   width: 200px;
   grid-column: 1/2; }
   @media screen and (min-width: 1824px) {
     .logo {
-      width: 250px; } }
+      width: 180px; } }
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .logo {
       width: 120px; } }
@@ -88,6 +89,9 @@
       margin: auto; }
 
 #soc {
+  position: fixed;
+  top: 5px;
+  right: 0;
   display: flex;
   justify-content: flex-end;
   margin-right: 20px; }
@@ -109,7 +113,7 @@
         font-size: 14px; } }
   #soc i {
     font-size: 40px;
-    color: #cdcdcd;
+    color: white;
     margin: 0 0 0 0.5em;
     max-height: 1em;
     transition: all 0.5s; }
@@ -225,7 +229,7 @@
         font-size: 15px !important; } }
     @media (min-width: 1800px) {
       .footer ul li {
-        font-size: 20px; } }
+        font-size: 15px; } }
   .footer ul li#big {
     text-align: left;
     font-size: 14px; }
@@ -234,7 +238,7 @@
         font-size: 15px !important; } }
     @media (min-width: 1800px) {
       .footer ul li#big {
-        font-size: 20px; } }
+        font-size: 15px; } }
   .footer ul.links0 {
     grid-column: 2/3;
     -webkit-padding-start: 0; }
@@ -274,7 +278,7 @@
         font-size: 15px !important; } }
     @media (min-width: 1800px) {
       .footer .copying-info {
-        font-size: 20px; } }
+        font-size: 15px; } }
   @media screen and (min-device-width: 320px) and (max-device-width: 480px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     .footer .links1, .footer .links2, .footer .links3 {
       display: none;
@@ -292,7 +296,7 @@ body {
   padding: 80px 0;
   background-color: #B8001D;
   color: white;
-  margin: 0; }
+  margin: 0 0 100px 0; }
   #header h1, #header h3 {
     width: 60%;
     max-width: 1000px;
@@ -322,7 +326,7 @@ p {
       width: 90%; } }
 
 main {
-  height: 100vh;
+  height: max-content;
   width: 100%;
   max-width: 1600px;
   margin: auto;
@@ -430,6 +434,9 @@ select {
       margin-right: 5px;
       width: 15px;
       height: 15px; }
+
+.hidden {
+  display: none; }
 
 /* -------------------------------------------------------------- */
 #joke {
