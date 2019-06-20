@@ -301,6 +301,9 @@ body {
     width: 60%;
     max-width: 1000px;
     margin: auto auto 50px auto; }
+    @media (max-width: 800px) {
+      #header h1, #header h3 {
+        width: 90%; } }
 
 h1 {
   text-transform: uppercase; }
@@ -337,12 +340,6 @@ main {
       display: block; } }
   main #yAxisType {
     width: 100%; }
-    main #yAxisType button {
-      font-family: 'Play', sans-serif;
-      padding: 5px;
-      font-size: 16px;
-      width: auto;
-      margin: 20px auto 20px 0; }
   main #multiples {
     grid-column: 1/2;
     grid-row: 1/2;
@@ -367,6 +364,13 @@ main {
     fill: grey; }
   main svg rect {
     opacity: 0.8; }
+
+button {
+  font-family: 'Play', sans-serif;
+  padding: 5px;
+  font-size: 16px;
+  width: auto;
+  margin: 20px auto 20px 0; }
 
 #sum {
   margin: 20px 0;
@@ -437,6 +441,9 @@ select {
 
 .hidden {
   display: none; }
+
+.visible {
+  display: block; }
 
 /* -------------------------------------------------------------- */
 #joke {
