@@ -5,11 +5,35 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg8"
    version="1.1"
    viewBox="0 0 214 60"
    height="60mm"
-   width="214mm">
+   width="214mm"
+   sodipodi:docname="example_driver.svg"
+   inkscape:version="0.92.4 (unknown)">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1857"
+     inkscape:window-height="1056"
+     id="namedview84"
+     showgrid="false"
+     inkscape:zoom="2.0492328"
+     inkscape:cx="128.09085"
+     inkscape:cy="145.94574"
+     inkscape:window-x="63"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1069" />
   <defs
      id="defs2" />
   <metadata
@@ -303,7 +327,7 @@
              x="20.969542"
              width="23"
              height="6.7775183"
-             style="display:inline;opacity:0.8;fill:#b8001d"
+             style="display:inline;opacity:1;fill:#d84556;fill-opacity:1"
              id="rect1005" />
           <rect
              y="31.31473"
@@ -311,7 +335,7 @@
              x="44.969543"
              width="23"
              height="100"
-             style="display:inline;opacity:0.8;fill:#b8001d"
+             style="display:inline;opacity:1;fill:#d84556;fill-opacity:1"
              id="rect1007" />
           <rect
              y="108.40536"
@@ -319,7 +343,7 @@
              x="68.969543"
              width="23"
              height="22.909374"
-             style="display:inline;opacity:0.8;fill:#b8001d"
+             style="display:inline;opacity:1;fill:#d84556;fill-opacity:1"
              id="rect1009" />
           <rect
              y="128.78653"
@@ -327,7 +351,7 @@
              x="92.969543"
              width="23"
              height="2.5281992"
-             style="display:inline;opacity:0.8;fill:#b8001d"
+             style="display:inline;opacity:1;fill:#d84556;fill-opacity:1"
              id="rect1011" />
           <rect
              y="130.08952"
@@ -335,7 +359,7 @@
              x="116.96954"
              width="23"
              height="1.2252042"
-             style="display:inline;opacity:0.8;fill:#b8001d"
+             style="display:inline;opacity:1;fill:#d84556;fill-opacity:1"
              id="rect1013" />
           <rect
              y="130.89661"
@@ -343,7 +367,7 @@
              x="140.96954"
              width="23"
              height="0.41812524"
-             style="display:inline;opacity:0.8;fill:#b8001d"
+             style="display:inline;opacity:1;fill:#d84556;fill-opacity:1"
              id="rect1015" />
           <rect
              y="131.16887"
@@ -544,16 +568,16 @@
           <line
              x1="60.811943"
              x2="60.811943"
-             y1="31.31473"
+             y1="28.036667"
              y2="131.31473"
-             style="display:inline;stroke:#808080;stroke-dasharray:2"
+             style="display:inline;stroke:#808080;stroke-width:1.01625812;stroke-dasharray:2.0325163"
              id="line1063" />
           <line
              x1="64.589546"
              x2="64.589546"
-             y1="31.31473"
+             y1="27.864138"
              y2="131.31473"
-             style="display:inline;stroke:#005ad3"
+             style="display:inline;stroke:#00dfff;stroke-width:1.01710665;stroke-opacity:1"
              id="line1065" />
           <text
              y="8.8147297"
@@ -562,7 +586,7 @@
              id="text1067">
             <tspan
                id="tspan1795"
-               style="font-size:16.86666679px">водій</tspan>
+               style="font-size:16.00000014px;fill:#d84556;fill-opacity:1;-inkscape-font-specification:'sans-serif, Normal';font-family:sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">водій</tspan>
           </text>
         </g>
       </g>

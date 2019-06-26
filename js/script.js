@@ -5,7 +5,7 @@ var mainColor =  'rgb(200,53,71)';
 var multiplesCont = $("#multiples")[0].getBoundingClientRect();
 // $("main").css("width", multiplesCont.width);
 
-var margin = {top: 30, right: 30, bottom: 50, left: 50},
+var margin = {top: 30, right: 30, bottom: 50, left: 30},
     width = multiplesCont.width - margin.left * 2 - margin.right,
     height = 180 - margin.top - margin.bottom;
 
@@ -140,7 +140,7 @@ function addChartCommonScale(myData, key) {
 
     /* додаємо і видаляємо svg по кліку */
     var svg = d3.select("#multiples")
-        .append("svg")
+        .insert("svg", ".remove")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .attr("class", "current remove")
@@ -259,7 +259,8 @@ function addChartCommonScale(myData, key) {
         .attr("x2", x(myData[0].mean) )
         .attr("y1", 0)
         .attr("y2", height)
-        .style("stroke", "#005AD3");
+        .style("stroke-width", "2px")
+        .style("stroke", "#00dfff");
 
     /* додаємо підпис */
     svg.append("text")
@@ -278,7 +279,7 @@ function addChartPersonalScale(myData, key) {
 
     /* додаємо і видаляємо svg по кліку */
     var svg = d3.select("#multiples")
-        .append("svg")
+        .insert("svg", ".remove")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .attr("class", "current remove")

@@ -6,7 +6,7 @@
 
 //$mainColor: #432E3E;
 $mainColor: #3D728E;
-$red: rgb(200,53,71);
+
 
 
 
@@ -85,12 +85,13 @@ p {
 
 main {
   height:max-content;
-  width:100%;
-  max-width:1600px;
-  margin:auto;
+  width:60%;
+  max-width:1000px;
+  margin:80px auto auto auto;
   display: grid;
   grid-template-columns: 75% 25%;
   @media(max-width:800px){
+    width:90%;
     display:block;
   }
 

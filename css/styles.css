@@ -294,7 +294,7 @@ body {
 
 #header {
   padding: 80px 0;
-  background-color: #c83547;
+  background-color: #d84556;
   color: white;
   margin: 0 0 100px 0; }
   #header h1, #header h3 {
@@ -330,13 +330,14 @@ p {
 
 main {
   height: max-content;
-  width: 100%;
-  max-width: 1600px;
-  margin: auto;
+  width: 60%;
+  max-width: 1000px;
+  margin: 80px auto auto auto;
   display: grid;
   grid-template-columns: 75% 25%; }
   @media (max-width: 800px) {
     main {
+      width: 90%;
       display: block; } }
   main #yAxisType {
     width: 100%; }
@@ -404,7 +405,7 @@ select {
     position: sticky;
     top: 0;
     font-family: 'Play', sans-serif;
-    color: #c83547;
+    color: #d84556;
     font-size: 18px;
     border: 0;
     border-bottom: 1px solid lightgrey;
@@ -414,13 +415,13 @@ select {
     background-color: white; }
   #types input[name="search"]::placeholder {
     /* Firefox, Chrome, Opera */
-    color: #c83547; }
+    color: #d84556; }
   #types input[name="search"]:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: #c83547; }
+    color: #d84556; }
   #types input[name="search"]::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: #c83547; }
+    color: #d84556; }
   #types ul {
     list-style-type: none;
     padding: 0;
