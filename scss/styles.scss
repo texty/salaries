@@ -24,7 +24,7 @@ body {
 
 #header {
   padding: 80px 0;
-  background-color: #B8001D;
+  background-color: #B8071D;
   color: white;
   margin: 0 0 100px 0;
   h1, h3 {
@@ -137,7 +137,7 @@ main {
     }
 
     rect {
-      opacity:0.8;
+      opacity:1;
     }
   }
 }
@@ -189,7 +189,7 @@ select {
     position:sticky;
     top:0;
     font-family: 'Play', sans-serif;
-    color: #B8001D;
+    color: #B8071D;
     font-size: 18px;
     border: 0;
     border-bottom: 1px solid lightgrey;
@@ -202,15 +202,15 @@ select {
 
 
   input[name="search"]::placeholder { /* Firefox, Chrome, Opera */
-    color: #B8001D;
+    color: #B8071D;
   }
 
   input[name="search"]:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #B8001D;
+    color: #B8071D;
   }
 
   input[name="search"]::-ms-input-placeholder { /* Microsoft Edge */
-    color: #B8001D;
+    color: #B8071D;
   }
 
 

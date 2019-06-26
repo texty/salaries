@@ -40,7 +40,7 @@
 
 #support-us {
   width: auto;
-  background-color: #ffc423 !important;
+  background-color: orange !important;
   padding: 10px;
   outline: none;
   border: none;
@@ -294,7 +294,7 @@ body {
 
 #header {
   padding: 80px 0;
-  background-color: #B8001D;
+  background-color: #B8071D;
   color: white;
   margin: 0 0 100px 0; }
   #header h1, #header h3 {
@@ -373,7 +373,7 @@ main {
   main svg g.tick text {
     fill: grey; }
   main svg rect {
-    opacity: 0.8; }
+    opacity: 1; }
 
 #sum {
   margin: 20px 0;
@@ -412,7 +412,7 @@ select {
     position: sticky;
     top: 0;
     font-family: 'Play', sans-serif;
-    color: #B8001D;
+    color: #B8071D;
     font-size: 18px;
     border: 0;
     border-bottom: 1px solid lightgrey;
@@ -422,13 +422,13 @@ select {
     background-color: white; }
   #types input[name="search"]::placeholder {
     /* Firefox, Chrome, Opera */
-    color: #B8001D; }
+    color: #B8071D; }
   #types input[name="search"]:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: #B8001D; }
+    color: #B8071D; }
   #types input[name="search"]::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: #B8001D; }
+    color: #B8071D; }
   #types ul {
     list-style-type: none;
     padding: 0;
