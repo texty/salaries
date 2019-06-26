@@ -1,6 +1,6 @@
 // set the dimensions and margins of the graph
 var log = console.log;
-var mainColor =  '#B8071D';
+var mainColor =  'rgb(200,53,71)';
 
 var multiplesCont = $("#multiples")[0].getBoundingClientRect();
 // $("main").css("width", multiplesCont.width);
