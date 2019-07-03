@@ -5,7 +5,7 @@ var mainColor =  'rgb(200,53,71)';
 var multiplesCont = $("#multiples")[0].getBoundingClientRect();
 // $("main").css("width", multiplesCont.width);
 
-var margin = {top: 30, right: 30, bottom: 50, left: 30},
+var margin = {top: 30, right: 30, bottom: 50, left: 50},
     width = multiplesCont.width - margin.left * 2 - margin.right,
     height = 180 - margin.top - margin.bottom;
 
