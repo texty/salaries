@@ -332,13 +332,13 @@ p {
   margin: 15px 0;
   padding: 0; }
 
-#text-description {
+.text-description {
   width: 80%;
   max-width: 1000px;
   min-width: 700px;
   margin: auto; }
   @media (max-width: 800px) {
-    #text-description {
+    .text-description {
       max-width: 90%;
       min-width: 90%;
       width: 90%; } }
