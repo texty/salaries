@@ -90,7 +90,7 @@
 
 #soc {
   position: fixed;
-  top: 5px;
+  top: 10px;
   right: 0;
   display: flex;
   justify-content: flex-end;
@@ -120,7 +120,7 @@
     transition: all 0.5s; }
     @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
       #soc i {
-        font-size: 20px; } }
+        font-size: 23px; } }
     #soc i:hover {
       color: pink; }
 

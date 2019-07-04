@@ -34,7 +34,7 @@
 
 #soc {
   position:fixed;
-  top:5px;
+  top:10px;
   right:0;
   display:flex;
   justify-content: flex-end;
@@ -72,7 +72,7 @@
     max-height: 1em;
     transition: all 0.5s;
     @media #{$mobile} {
-      font-size:20px;
+      font-size:23px;
     }
 
     &:hover {
