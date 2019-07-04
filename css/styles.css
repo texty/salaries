@@ -94,7 +94,8 @@
   right: 0;
   display: flex;
   justify-content: flex-end;
-  margin-right: 20px; }
+  margin-right: 20px;
+  z-index: 1000; }
   #soc div#translate {
     display: flex; }
   #soc a {
@@ -296,6 +297,7 @@ body {
 
 #header {
   padding: 80px 0 0 0;
+  z-index: 0;
   color: white;
   margin: 0 0 50px 0; }
   #header h1, #header h3 {
