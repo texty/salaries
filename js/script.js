@@ -259,12 +259,13 @@ function addChartCommonScale(myData, key) {
         .attr("x2", x(myData[0].mean) )
         .attr("y1", 0)
         .attr("y2", height)
-        .style("stroke-width", "2px")
+        .style("stroke-width", "1px")
         .style("stroke", "#00dfff");
 
     /* додаємо підпис */
     svg.append("text")
         .attr("text-anchor", "start")
+        .attr("class", "multipleChartHeader")
         .attr("y", -5)
         .attr("x", 0)
         .text(key)
