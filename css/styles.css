@@ -292,8 +292,7 @@ body {
   padding: 0;
   color: #484D60;
   font-family: 'Play', sans-serif;
-  line-height: 1.6;
-  font-size: 20px; }
+  line-height: 1.6; }
 
 #header {
   padding: 80px 0 0 0;
@@ -325,15 +324,25 @@ h1 {
 h3 {
   font-size: 25px;
   font-weight: bold; }
+  @media (max-width: 825px) {
+    h3 {
+      font-size: 20px; } }
 
 h2 {
   margin-top: 50px;
   font-size: 25px; }
+  @media (max-width: 825px) {
+    h2 {
+      font-size: 20px; } }
 
 p {
   line-height: 1.6;
   margin: 15px 0;
-  padding: 0; }
+  padding: 0;
+  font-size: 20px; }
+  @media (max-width: 825px) {
+    p {
+      font-size: 17px; } }
 
 .text-description {
   width: 80%;
