@@ -375,10 +375,6 @@ main {
     grid-column: 1/2;
     grid-row: 1/2;
     width: 100%; }
-    @media (max-width: 800px) {
-      main #multiples {
-        width: 90%;
-        margin: auto; } }
   main #filters {
     width: 100%;
     grid-column: 2/3;
@@ -397,7 +393,7 @@ main {
     opacity: 1; }
   @media (max-width: 825px) and (orientation: portrait) {
     main svg text.multipleChartHeader {
-      font-size: 13px; } }
+      font-size: 14px; } }
 
 #sum {
   margin: 20px 0;
