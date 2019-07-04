@@ -12,7 +12,7 @@ body {
   color:#484D60;
   font-family: 'Play', sans-serif;
   line-height: 1.6;
-  font-size:18px;
+  font-size:20px;
   //display:grid;
   //grid-template-columns: 400px auto;
   //grid-gap:30px;
@@ -62,7 +62,8 @@ body {
 
 
 h2 {
-  font-size:20px;
+  margin-top:50px;
+  font-size:25px;
 }
 
 
@@ -85,7 +86,7 @@ p {
 
 
 #text-description {
-  width:60%;
+  width:50%;
   max-width:1000px;
   margin:auto;
   @media(max-width:800px){
@@ -95,7 +96,7 @@ p {
 
 main {
   height:max-content;
-  width:60%;
+  width:50%;
   max-width:1000px;
   margin:80px auto auto auto;
   display: grid;
