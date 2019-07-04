@@ -317,7 +317,19 @@ a.textlink {
   border-bottom:1px solid black;
 }
 
+a.alsoRead {
+  width:50%;
+  margin:auto;
+  color:orange;
+  text-decoration: none;
+  border-bottom:1px solid orange;
+}
+
 a.textlink:hover {
   color:$red;
   border-bottom:1px solid $red;
+}
+
+.smallFontText {
+  font-size:13px;
 }

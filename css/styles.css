@@ -515,8 +515,18 @@ a.textlink {
   text-decoration: none;
   border-bottom: 1px solid black; }
 
+a.alsoRead {
+  width: 50%;
+  margin: auto;
+  color: orange;
+  text-decoration: none;
+  border-bottom: 1px solid orange; }
+
 a.textlink:hover {
   color: #d84556;
   border-bottom: 1px solid #d84556; }
+
+.smallFontText {
+  font-size: 13px; }
 
 /*# sourceMappingURL=styles.css.map */
