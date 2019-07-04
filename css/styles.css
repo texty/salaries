@@ -284,6 +284,9 @@
       display: none;
       font-size: 0 !important; } }
 
+* {
+  outline: none; }
+
 body {
   margin: 0;
   padding: 0;
