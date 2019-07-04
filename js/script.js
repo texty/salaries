@@ -434,6 +434,9 @@ $(window).on("resize",  function(d){
     var newMultiplesCont = $("#multiples")[0].getBoundingClientRect();
     var newWidth = newMultiplesCont.width - margin.left * 2 - margin.right;
 
+    width = newWidth;
+
+
     var yMax = d3.max(yAxisMax, function(d) { return d });
     var xMax = d3.max(xAxisMax, function(d) { return d });
 
