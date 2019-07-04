@@ -73,18 +73,6 @@ p {
   padding:0;
 }
 
-//button {
-//  background-color:grey;
-//  border:none;
-//  color:white;
-//  font-family: 'Play', sans-serif;
-//  padding:10px;
-//  font-size:16px;
-//  width: auto;
-//  margin:20px auto 20px 0;
-//}
-
-
 #text-description {
   width:80%;
   max-width:1000px;
@@ -317,52 +305,13 @@ button.main-section-button:active, input[type = "submit"]:active {
 
 
 
-/* -------------------------------------------------------------- */
-#joke {
-  //position:sticky;
-  //top:10px;
-  //color:white;
-  background-color: #E6EFFF;
-  padding:50px 20px 20px 20px;
-  margin:0;
-  height:350vh;
-  overflow-y: auto;
-
-  #text {
-    text-transform: uppercase;
-    //font-size:25px;
-    font-weight: bold;
-    //letter-spacing: 5px;
-    color: #5893FC;
-  }
-
-
-  .misprint {
-    //background-color:#99AAE0;
-    padding:2px;
-    color:#5893FC;
-    font-weight:bold;
-  }
-
-  .collapsible {
-    margin-bottom:5px;
-    background-color: #5893FC;
-    color: #eeeeee;
-    cursor: pointer;
-    padding: 10px;
-    width: auto;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size:16px;
-  }
+a.textlink {
+  color:inherit;
+  text-decoration: none;
+  border-bottom:1px solid black;
 }
 
-.hideElem {
-  display:none;
+a.textlink:hover {
+  color:$red;
+  border-bottom:1px solid $red;
 }
-
-.misprintCases {
-  margin:0;
-}
-
